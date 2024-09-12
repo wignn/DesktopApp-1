@@ -23,7 +23,7 @@ function AddDataPage() {
     try {
       const response = await axios.post(`${api}/data`, formData); // API call
       setMessage('Data successfully added!');
-      setFormData({ name: '', email: '', password: '' }); // Clear form fields
+      setFormData({ name: '', email: '', password: '' }); // 
     } catch (error) {
       setMessage('Failed to add data!');
       console.error('Error posting data:', error);

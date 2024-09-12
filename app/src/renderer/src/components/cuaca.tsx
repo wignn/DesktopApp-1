@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const WeatherWidget = () => {
@@ -19,11 +19,11 @@ const WeatherWidget = () => {
             current_weather: true,
           }
         });
-        console.log(response.data); // Debugging log
+        console.log(response.data); 
         setWeather(response.data);
         setLoading(false);
       } catch (err) {
-        console.error(err); // Debugging log
+        console.error(err); 
         setError(err);
         setLoading(false);
       }

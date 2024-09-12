@@ -34,7 +34,7 @@ function PathWidget() {
 
       {/* Menu Content */}
       <div className={`mt-4 flex flex-col items-center space-y-2 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Top Icon */}
+        {/* Home Icon */}
         <div
           className="text-xl text-blue-500 cursor-pointer bg-transparent p-2 rounded-full hover:bg-blue-100 transition-transform duration-150 ease-in-out transform active:scale-95"
           onClick={() => goToPath('/')}
@@ -42,17 +42,17 @@ function PathWidget() {
         >
           <FontAwesomeIcon icon={faHome} />
         </div>
+
         {/* Icons in Vertical List */}
         <div className="flex flex-col items-center space-y-2">
-          {[
-            { icon: faDatabase, color: 'text-green-500', path: '/data', label: 'Data' },
-            { icon: faInfoCircle, color: 'text-purple-500', path: '/info', label: 'Info' },
-            { icon: faUser, color: 'text-orange-500', path: '/profile', label: 'Profile' },
-            { icon: faCog, color: 'text-red-500', path: '/settings', label: 'Settings' },
+          {[{ icon: faDatabase, color: 'green', path: '/data', label: 'Data' },
+            { icon: faInfoCircle, color: 'purple', path: '/account', label: 'Info' },
+            { icon: faUser, color: 'orange', path: '/profile', label: 'Profile' },
+            { icon: faCog, color: 'red', path: '/settings', label: 'Settings' }
           ].map(({ icon, color, path, label }) => (
             <div
               key={path}
-              className={`text-xl ${color} cursor-pointer bg-transparent p-2 rounded-full hover:bg-${color}-100 transition-transform duration-150 ease-in-out transform active:scale-95`}
+              className={`text-xl text-${color}-500 cursor-pointer bg-transparent p-2 rounded-full hover:bg-${color}-100 transition-transform duration-150 ease-in-out transform active:scale-95`}
               onClick={() => goToPath(path)}
               aria-label={label}
             >
