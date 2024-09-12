@@ -1,0 +1,214 @@
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #root {
+    @apply h-full;
+  }
+  html,
+  body {
+    @apply h-full;
+
+    @apply select-none;
+
+    @apply bg-transparent;
+
+    @apply font-mono antialiased text-white;
+
+    @apply overflow-hidden;
+}
+
+  header {
+    -webkit-app-region: drag;
+  }
+
+  button {
+    -webkit-app-region: no-drag;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#555] rounded-md;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.wallpaper-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.wallpaper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.info-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  animation: fadeIn 2s;
+}
+
+.info-container div {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+#time {
+  font-size: 30px; /* Reduced size */
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#date {
+  font-size: 16px; /* Adjusted to match smaller time */
+  text-align: center;
+  margin-top: 10px;
+  color: #f3f3f3;
+}
+
+#online-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: lime;
+  font-weight: 600;
+}
+
+#online-status i {
+  margin-right: 8px;
+}
+
+.social-widget {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.social-widget a {
+  color: white;
+  font-size: 22px;
+  transition: color 0.3s ease;
+}
+
+.social-widget a:hover {
+  color: #ff416c;
+}
+
+.weather-widget {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  text-align: right;
+  animation: fadeIn 4s;
+}
+
+.weather-widget i {
+  margin-right: 8px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .info-container {
+    left: 10px;
+    top: 10px;
+    padding: 10px 15px;
+  }
+
+  .social-widget {
+    bottom: 10px;
+    left: 10px;
+    padding: 8px 15px;
+  }
+
+  #time {
+    font-size: 24px; /* Further reduced size for smaller screens */
+  }
+
+  #date {
+    font-size: 14px; /* Adjusted to match smaller time */
+  }
+
+  .social-widget a {
+    font-size: 18px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.weather-widget.loading, .weather-widget.error {
+  height: 100px; 
+}
+
+.loading-message {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
