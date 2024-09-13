@@ -1,19 +1,15 @@
-import './assets/main.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import Versions from './components/Versions'
-import WeatherWidget from './components/cuaca'
-import Icon from './components/SosIcon'
-import Time from './components/Time'
+import './assets/main.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+import Home from './components/home';
 
 function App(): JSX.Element {
+
   return (
     <div>
-      <Time />
-      <Icon />
-      <WeatherWidget />
-      <Versions />
+      <Home/>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

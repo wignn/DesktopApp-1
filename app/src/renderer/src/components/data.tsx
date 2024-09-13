@@ -19,7 +19,7 @@ function PathWidget() {
 
   return (
     <div
-      className={`fixed right-6 top-1/3 bg-transparent shadow-none rounded-full p-2 transition-all duration-300 ease-in-out ${
+      className={`fixed right-[20px] top-1/3 bg-transparent shadow-none rounded-full p-2 transition-all duration-300 ease-in-out ${
         isOpen ? 'w-16 h-16 scale-100 opacity-100' : 'w-16 h-16 scale-75 opacity-75'
       } flex flex-col items-center justify-start`}
     >
@@ -43,12 +43,12 @@ function PathWidget() {
           <FontAwesomeIcon icon={faHome} />
         </div>
 
-        {/* Icons in Vertical List */}
+
         <div className="flex flex-col items-center space-y-2">
           {[{ icon: faDatabase, color: 'green', path: '/data', label: 'Data' },
-            { icon: faInfoCircle, color: 'purple', path: '/account', label: 'Info' },
-            { icon: faUser, color: 'orange', path: '/profile', label: 'Profile' },
-            { icon: faCog, color: 'red', path: '/settings', label: 'Settings' }
+            { icon: faInfoCircle, color: 'purple', path: '/post', label: 'Info' },
+            { icon: faUser, color: 'orange', path: '/login', label: 'Profile' },
+            { icon: faCog, color: 'red', path: '/Register', label: 'Settings' }
           ].map(({ icon, color, path, label }) => (
             <div
               key={path}

@@ -1,7 +1,7 @@
 import AddDataPage from '../components/DataForm'
 
-function page() {
+export default function Data() {
   return <AddDataPage />
 }
 
-export default page
+

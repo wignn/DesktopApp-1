@@ -1,5 +1,4 @@
-
-import Wallpaper from './wallpeper'; // Ganti dengan path yang sesuai
+import Wallpaper from './wallpeper'; 
 import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {

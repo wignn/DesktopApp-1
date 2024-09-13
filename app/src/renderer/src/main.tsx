@@ -1,30 +1,44 @@
-// index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './App';
-import PageData from './data/page';
-import Data from './account/page';
-import MainLayout from './clientWarp'; // Import layout
+import MainLayout from './clientWarp';
 import './assets/main.css';
+import Post from './components/post';
+import LoginPage from './page/Login';
+import Register from './page/Register';
+import Data from './page/data';
+import ProtectedRoute from './hooks/route'; 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />, 
+    element: <MainLayout />,
     children: [
       {
         path: '/',
         element: <Home />
       },
       {
-        path: '/data',
-        element: <PageData />
+        path: '/post',
+        element: <Post/>
       },
       {
-        path: '/account',
-        element: <Data />
+        path: '/login',
+        element: <LoginPage />
       },
+      {
+        path: '/register',
+        element: <Register />
+      },
+      {
+        path: '/data',
+        element: (
+          <ProtectedRoute redirectTo="/login">
+            <Data />
+          </ProtectedRoute>
+        )
+      }
     ]
   }
 ]);
