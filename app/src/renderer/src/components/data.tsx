@@ -1,4 +1,3 @@
--- Active: 1725850987027@@127.0.0.1@5432
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
