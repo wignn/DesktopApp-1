@@ -5,7 +5,7 @@
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.tsx",
     "src/preload/*.d.ts"
-  ],
+, "../api/prisma/trash/ChatWindow.tsx", "../api/prisma/trash/ChatSideBar.tsx", "../api/prisma/trash/ChatInput.tsx"  ],
   "compilerOptions": {
     "composite": true,
     "jsx": "react-jsx",

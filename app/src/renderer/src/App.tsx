@@ -16,11 +16,14 @@ const PrivateRoute = () => {
   return currentToken ? <Outlet /> : <Login />
 }
 
+
 function App(): JSX.Element {
+  const api = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     async function AuthService() {
       try {
-        const result = currentToken?await axios.get('http://localhost:4001/auth', {
+        const result = currentToken?await axios.get(`${api}/auth`, {
               params: { token: currentToken }
             })
           : { data: '' }

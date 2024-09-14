@@ -1,3 +1,4 @@
+-- Active: 1725850987027@@127.0.0.1@5432
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +9,7 @@ import {
   faDatabase,
   faInfoCircle,
   faUser,
-  faCog,
+  faCog,faChartBar, 
 } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../assets/main.css';
@@ -28,7 +29,7 @@ function PathWidget() {
 
   return (
     <div
-      className={`fixed right-[20px] top-1/3 bg-transparent shadow-none rounded-full absolute p-2 transition-all duration-300 ease-in-out z-50 ${
+      className={`right-[20px] top-1/3 bg-transparent shadow-none rounded-full absolute p-2 transition-all duration-300 ease-in-out z-50 ${
         isOpen ? 'w-16 h-16 scale-100 opacity-100' : 'w-16 h-16 scale-75 opacity-75'
       } flex flex-col items-center justify-start`}
     >
@@ -60,7 +61,7 @@ function PathWidget() {
             <FontAwesomeIcon icon={faHome} />
           </div>
           {hoveredIcon === 'Home' && (
-            <span className="absolute left-12 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded-lg transition-all duration-300">
+            <span className="absolute right-12 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded-lg transition-all duration-300">
               Home
             </span>
           )}
@@ -70,8 +71,8 @@ function PathWidget() {
         <div className="flex flex-col items-center space-y-4">
           {[
             { icon: faDatabase, color: 'green', path: '/data', label: 'Data' },
-            { icon: faInfoCircle, color: 'purple', path: '/chat', label: 'Info' },
-            { icon: faUser, color: 'orange', path: '/login', label: 'Profile' },
+            { icon: faChartBar, color: 'green', path: '/chat', label: 'chat' },
+            { icon: faUser, color: 'blue', path: '/login', label: 'Profile' },
             { icon: faCog, color: 'red', path: '/settings', label: 'Settings' },
           ].map(({ icon, color, path, label }) => (
             <div
@@ -89,7 +90,7 @@ function PathWidget() {
               </div>
               {hoveredIcon === label && (
                 <span
-                  className={`absolute left-12 top-1/2 transform -translate-y-1/2 bg-${color}-500 text-white px-2 py-1 rounded-lg transition-all duration-300`}
+                  className={`absolute right-12 top-1/2 transform -translate-y-1/2 bg-${color}-500 text-white px-2 py-1 rounded-lg transition-all duration-300`}
                 >
                   {label}
                 </span>

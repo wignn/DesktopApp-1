@@ -15,23 +15,22 @@ datasource db {
 }
 
 model User {
-  id             Int        @id @default(autoincrement())
-  email          String     @unique
-  name           String?
-  password       String
-  createdAt      DateTime   @default(now())
-  profilePicture String?
-  verifyToken    String?
-  isOnline       Boolean    @default(false)
-  data           Data[]
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  name         String
+  password     String
+  createdAt    DateTime  @default(now())
+  sentMessages Message[] @relation("UserSentMessages")
+  messages  Message[] @relation("ContactMessages")
 }
 
-model Data {
-  id          Int      @id @default(autoincrement())
-  email       String
-  name        String
-  password    String
-  userId      Int
-  createdAt   DateTime @default(now())
-  user        User     @relation(fields: [userId], references: [id])
+
+model Message {
+  id         Int     @id @default(autoincrement())
+  text       String
+  senderId   Int
+  receiverId Int
+  sender     User    @relation("UserSentMessages", fields: [senderId], references: [id])
+  receiver   User @relation("ContactMessages", fields: [receiverId], references: [id])
+  createdAt  DateTime @default(now())
 }
