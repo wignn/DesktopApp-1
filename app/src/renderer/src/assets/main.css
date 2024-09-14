@@ -182,11 +182,11 @@ body, html {
   }
 
   #time {
-    font-size: 24px; /* Further reduced size for smaller screens */
+    font-size: 24px; 
   }
 
   #date {
-    font-size: 14px; /* Adjusted to match smaller time */
+    font-size: 14px; 
   }
 
   .social-widget a {

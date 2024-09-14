@@ -46,7 +46,7 @@ function LoginPage() {
           <div className="mb-4 relative">
             <label className="block text-gray-700 font-medium mb-2">Email:</label>
             <input 
-              type="email" 
+              type="text" 
               name="email" 
               value={formData.email} 
               onChange={handleChange} 

@@ -9,6 +9,7 @@ import LoginPage from './page/Login';
 import Register from './page/Register';
 import Data from './page/data';
 import ProtectedRoute from './hooks/route'; 
+import Chat from './page/Chat';
 
 const router = createBrowserRouter([
   {
@@ -32,9 +33,13 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
+        path: '/chat',
+        element: <Chat />
+      },
+      {
         path: '/data',
         element: (
-          <ProtectedRoute redirectTo="/login">
+          <ProtectedRoute>
             <Data />
           </ProtectedRoute>
         )

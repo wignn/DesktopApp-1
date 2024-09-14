@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useAuth from '../hooks/auth'; 
 import img from '../assets/11233.png';
+import Logout from './logout';
 
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,12 +51,7 @@ const ProfileButton = () => {
                 </p>
               </div>
             </div>
-            <button
-              onClick={logout}
-              className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-colors duration-300 ease-in-out"
-            >
-              Logout
-            </button>
+          <Logout/>
           </div>
         )}
       </div>

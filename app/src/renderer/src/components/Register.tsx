@@ -21,8 +21,9 @@ function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${api}/register`, formData); // API call for registration
+      const response = await axios.post(`${api}/register`, formData);
       setMessage('Registration successful!');
+      window.location.href="/login"
       setFormData({ name: '', email: '', password: '' }); 
     } catch (error) {
       setMessage('Registration failed!');
