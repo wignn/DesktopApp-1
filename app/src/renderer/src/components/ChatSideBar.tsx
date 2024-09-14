@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+const contacts = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
 
-const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Sidebar = ({ isOpen, selectChat }) => {
   return (
-    <div className={`fixed top-0 left-0 h-full transition-transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} bg-gray-800 text-white w-64`}>
-      <button
-        className="absolute top-4 right-4 text-xl"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? '×' : '≡'}
-      </button>
-      <div className="p-4">
-        <h2 className="text-lg font-bold">Chat Contacts</h2>
-        <ul>
-          {/* List contacts here */}
-          <li className="py-2">Contact 1</li>
-          <li className="py-2">Contact 2</li>
-        </ul>
+    <div
+      className={`bg-transparent backdrop-blur-lg fixed top-0 left-0 h-full bg-gray-900 text-white transition-transform duration-300 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
+      style={{ width: '250px' }}
+    >
+      <div className="flex justify-between items-center p-4 border-b border-gray-700">
+        <h2 className="text-xl font-bold">Contacts</h2>
       </div>
+      <ul className="p-4">
+        {contacts.map((contact) => (
+          <li
+            key={contact.id}
+            onClick={() => selectChat(contact)}
+            className="p-2 cursor-pointer hover:bg-gray-800 rounded-md transition-colors duration-200"
+          >
+            {contact.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

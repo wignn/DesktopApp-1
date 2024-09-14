@@ -180,19 +180,14 @@ app.post('/login', async (req, res) => {
 app.get('/auth', (req, res) => {
   const { token } = req.query;
 
-  if (!token) {
-    return res.status(400).json({ message: 'Token is required' });
-  }
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err) => {
     if (err) {
       if (err.name === 'TokenExpiredError') {
         return res.status(401).json({ message: 'Token expired' });
-      } else {
-        return res.status(403).json({ message: 'Invalid token' });
       }
+      res.status(500).json({message:"internal error"})
     }
-    res.status(200).json({ user: decoded });
+    res.status(200).json({ token });
   });
 });
 

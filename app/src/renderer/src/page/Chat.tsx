@@ -1,16 +1,27 @@
-import React from 'react';
+import  { useState } from 'react';
 import Sidebar from '../components/ChatSideBar';
 import ChatWindow from '../components/ChatWindow';
-import ChatInput from '../components/ChatInput';
 
-const Chat: React.FC = () => {
+const Chat = () => {
+  const [activeChat, setActiveChat] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const selectChat = (contact) => {
+    setActiveChat(contact);
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex flex-col flex-1 bg-transparent">
-        <ChatWindow />
-        <ChatInput />
-      </div>
+    <div className="h-screen flex">
+      <Sidebar isOpen={isSidebarOpen} selectChat={selectChat} />
+      <ChatWindow
+        activeChat={activeChat}
+        toggleSidebar={toggleSidebar}
+        isSidebarOpen={isSidebarOpen}
+      />
     </div>
   );
 };

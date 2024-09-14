@@ -1,7 +1,8 @@
-import AddDataPage from '../components/DataForm'
+import React from 'react';
+import AddDataPage from '../components/DataForm';
 
-export default function Data() {
-  return <AddDataPage />
-}
+const Data: React.FC = () => {
+  return <AddDataPage />;
+};
 
-
+export default Data;
