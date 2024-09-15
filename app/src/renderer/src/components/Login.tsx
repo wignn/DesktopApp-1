@@ -79,6 +79,7 @@ function LoginPage() {
             Login
           </button>
         </form>
+        <a href='Register'>create acount</a>
         {message && (
           <p className={`mt-4 text-center font-medium ${message.includes('successful') ? 'text-green-600' : 'text-red-600'}`}>
             {message}

@@ -71,8 +71,8 @@ function PathWidget() {
           {[
             { icon: faDatabase, color: 'green', path: '/data', label: 'Data' },
             { icon: faChartBar, color: 'green', path: '/chat', label: 'chat' },
-            { icon: faUser, color: 'blue', path: '/login', label: 'Profile' },
-            { icon: faCog, color: 'red', path: '/settings', label: 'Settings' },
+            { icon: faUser, color: 'blue', path: '/login', label: 'Login' },
+            { icon: faCog, color: 'red', path: '/dataAcount', label: 'Settings' },
           ].map(({ icon, color, path, label }) => (
             <div
               key={path}

@@ -55,6 +55,7 @@ app.post("/user", async (req, res) => {
 });
 
 const userSchema = z.object({
+  id: z.number().optional(),
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
@@ -65,9 +66,10 @@ app.post("/data", async (req, res) => {
     const validatedData = userSchema.parse(req.body);
     const newUser = await prisma.data.create({
       data: {
-        Name: validatedData.name,
-        Email: validatedData.email,
-        Password: validatedData.password,
+        userId: validatedData.id,
+        name: validatedData.name,
+        email: validatedData.email,
+        password: validatedData.password,
       },
     });
 
@@ -81,9 +83,15 @@ app.post("/data", async (req, res) => {
   }
 });
 
-app.get("/data", async (req, res) => {
+app.get("/dataAcount/:id", async (req, res) => {
+  const {id} = req.params
+  const userId = parseInt(id,10)
   try {
-    const data = await prisma.data.findMany();
+    const data = await prisma.data.findMany({
+      where:{
+        userId:userId
+      }
+    });
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching data:", error);

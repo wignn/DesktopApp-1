@@ -8,6 +8,7 @@ function RegisterPage() {
     email: '',
     password: ''
   });
+
   const [message, setMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
