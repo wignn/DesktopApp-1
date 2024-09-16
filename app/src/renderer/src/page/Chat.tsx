@@ -48,7 +48,7 @@ function Chat() {
 
   useEffect(() => {
     if (currentUserId) {
-      fetchData('contact', (data) => {
+      fetchData('/massage/contact', (data) => {
         setContacts(data.contact.filter((contact) => contact.id !== currentUserId));
       });
     }
@@ -56,7 +56,7 @@ function Chat() {
 
   useEffect(() => {
     if (activeChat && currentUserId) {
-      fetchData(`TampilkanPesan/${currentUserId}/${activeChat.id}`, (data) => {
+      fetchData(`massage/${currentUserId}/${activeChat.id}`, (data) => {
         setMessages((prevMessages) => ({
           ...prevMessages,
           [activeChat.id]: data.messages
@@ -125,7 +125,7 @@ function Chat() {
     }
 
     try {
-      await axios.post(`${apiBaseUrl}/kirimPesan`, {
+      await axios.post(`${apiBaseUrl}/massage`, {
         sender: currentUserId,
         receiverId: message.receiverId,
         text: message.text

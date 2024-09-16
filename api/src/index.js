@@ -217,7 +217,7 @@ wss.on('connection', ws => {
 });
 
 //malas pake b ing
-app.post('/kirimPesan', async (req, res) => {
+app.post('/massage', async (req, res) => {
   try {
     const { receiverId, text, sender } = req.body;
     if (!receiverId || !text) {
@@ -241,7 +241,7 @@ app.post('/kirimPesan', async (req, res) => {
   }
 });
 
-app.get("/contact", async (req, res) => {
+app.get("/massage/contact", async (req, res) => {
   try {
     const contact = await prisma.user.findMany();
     return res.status(200).json({ contact });
@@ -251,7 +251,7 @@ app.get("/contact", async (req, res) => {
   }
 });
 
-app.get("/TampilkanPesan/:sender/:receiver", async (req, res) => {
+app.get("/massage/:sender/:receiver", async (req, res) => {
   try {
     const { sender, receiver } = req.params;
     const senderId = parseInt(sender, 10);
