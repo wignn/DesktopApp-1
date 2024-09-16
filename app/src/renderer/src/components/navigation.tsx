@@ -6,7 +6,7 @@ import {
   faTimes,
   faHome,
   faDatabase,
-  faInfoCircle,
+  // faInfoCircle,
   faUser,
   faCog,faChartBar, 
 } from '@fortawesome/free-solid-svg-icons';
