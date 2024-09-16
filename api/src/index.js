@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 // Route to get all users
-app.get("/user/f", async (req, res) => {
+app.get("/user/fecth", async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);

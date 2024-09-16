@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 function Chat() {
   const [activeChat, setActiveChat] = useState(null);
@@ -22,13 +22,25 @@ function Chat() {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   const wsUrl = import.meta.env.VITE_API_WS_URL;
 
-
-  const fetchData = async (endpoint, setData) => {
+  const fetchContacts = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/${endpoint}`);
-      setData(response.data);
+      const response = await axios.get(`${apiBaseUrl}/massage/contact`);
+      setContacts(response.data.contact.filter((contact) => contact.id !== currentUserId));
     } catch (error) {
-      console.error(`Failed to fetch ${endpoint}:`, error);
+      console.error('Failed to fetch contacts:', error);
+    }
+  };
+
+  const fetchMessages = async (chatId) => {
+    try {
+      const response = await axios.get(`${apiBaseUrl}/massage/${currentUserId}/${chatId}`);
+      setMessages((prevMessages) => ({
+        ...prevMessages,
+        [chatId]: response.data.messages
+      }));
+      setIsFirstLoad(true);
+    } catch (error) {
+      console.error('Failed to fetch messages:', error);
     }
   };
 
@@ -48,21 +60,13 @@ function Chat() {
 
   useEffect(() => {
     if (currentUserId) {
-      fetchData('/massage/contact', (data) => {
-        setContacts(data.contact.filter((contact) => contact.id !== currentUserId));
-      });
+      fetchContacts();
     }
   }, [currentUserId]);
 
   useEffect(() => {
     if (activeChat && currentUserId) {
-      fetchData(`massage/${currentUserId}/${activeChat.id}`, (data) => {
-        setMessages((prevMessages) => ({
-          ...prevMessages,
-          [activeChat.id]: data.messages
-        }));
-        setIsFirstLoad(true); 
-      });
+      fetchMessages(activeChat.id);
     }
   }, [activeChat, currentUserId]);
 
@@ -79,7 +83,7 @@ function Chat() {
             message.data
           ]
         }));
-        setIsFirstLoad(true)
+        setIsFirstLoad(true);
       }
     };
 
@@ -93,10 +97,8 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-    if (activeChat) {
-      if (isFirstLoad) {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
-      }
+    if (activeChat && isFirstLoad) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
     }
   }, [messages, activeChat, isFirstLoad]);
 
@@ -205,7 +207,7 @@ function Chat() {
                     </div>
                   </div>
                 ))}
-                <div ref={messagesEndRef} />  
+                <div ref={messagesEndRef} />
               </div>
               <div className="">
                 <form onSubmit={handleSendMessage} className="flex items-center   border-gray-300">
