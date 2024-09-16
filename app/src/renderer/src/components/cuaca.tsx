@@ -49,7 +49,6 @@ const WeatherWidget = () => {
     1: "Mainly clear",
     2: "Partly cloudy",
     3: "Overcast",
-    // Tambahkan kode cuaca lainnya sesuai kebutuhan
   };
 
   const weatherDescription = weatherDescriptions[description] || "Unknown";
