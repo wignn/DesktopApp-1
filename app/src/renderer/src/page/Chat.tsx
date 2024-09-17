@@ -158,7 +158,7 @@ function Chat() {
         style={{ width: '250px' }}
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Contacts</h2>
+          <h2 className="text-xl font-bold text-center" />Contacts</h2>
         </div>
         <ul className="p-4">
           {contacts.length > 0 ? (
